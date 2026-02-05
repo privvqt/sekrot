@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Laboratory ❤️‍🔥</title>
+  <link rel="stylesheet" href="love-lab-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <!-- Particle System Background -->
+  <canvas id="particles"></canvas>
+  
+  <!-- Lab Equipment Decoration -->
+  <div class="lab-equipment">
+    <div class="beaker beaker-1"></div>
+    <div class="beaker beaker-2"></div>
+    <div class="beaker beaker-3"></div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Welcome Screen -->
+    <section id="welcome" class="screen active">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+        </div>
+        <div class="terminal-body">
+          <p class="terminal-line"><span class="prompt">$</span> initializing_love_protocol.exe</p>
+          <p class="terminal-line typing-effect" data-text=">> System: Love detected... [OK]"></p>
+          <p class="terminal-line typing-effect" data-text=">> Running compatibility tests..."></p>
+          <p class="terminal-line typing-effect" data-text=">> Chemistry levels: OFF THE CHARTS ⚗️"></p>
+          <p class="terminal-line typing-effect" data-text=">> Ready to begin experiment?"></p>
+        </div>
+      </div>
+      <button class="neon-button" onclick="startExperiment()">
+        <span>BEGIN EXPERIMENT</span>
+      </button>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="screen">
+      <h1 class="glitch-title" data-text="LOVE LABORATORY">LOVE LABORATORY</h1>
+      <p class="subtitle">Select an experiment to run</p>
+      
+      <div class="experiments-grid">
+        
+        <div class="experiment-card" onclick="runExperiment('timeline')" style="--accent: #ff006e">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">⏳</div>
+          <h3>TIME CAPSULE</h3>
+          <p>Our moments preserved in data</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('reasons')" style="--accent: #8338ec">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">💜</div>
+          <h3>REASON GENERATOR</h3>
+          <p>Why you're extraordinary</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('quiz')" style="--accent: #3a86ff">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">🧪</div>
+          <h3>COMPATIBILITY TEST</h3>
+          <p>How well do we match?</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('future')" style="--accent: #fb5607">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">🔮</div>
+          <h3>FUTURE SIMULATOR</h3>
+          <p>Our story, projected forward</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Time Capsule -->
+    <section id="timeline" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">TIME CAPSULE EXPERIMENT</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item" style="--delay: 0.1s">
+          <div class="timeline-date">Day 001</div>
+          <div class="timeline-content">
+            <h4>First Contact</h4>
+            <p>The moment everything changed. My heart did this weird skip thing.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" style="--delay: 0.2s">
+          <div class="timeline-date">Day 023</div>
+          <div class="timeline-content">
+            <h4>The Realization</h4>
+            <p>I couldn't stop thinking about you. Science confirms: you're stuck in my brain.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" style="--delay: 0.3s">
+          <div class="timeline-date">Day 089</div>
+          <div class="timeline-content">
+            <h4>Peak Happiness</h4>
+            <p>That day we laughed until 3am. My cheeks hurt but I didn't care.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" style="--delay: 0.4s">
+          <div class="timeline-date">Today</div>
+          <div class="timeline-content">
+            <h4>Still Going Strong</h4>
+            <p>Every day with you is a new experiment in joy. Results: consistently amazing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reasons Generator -->
+    <section id="reasons" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">REASON GENERATOR</h2>
+      
+      <div class="generator-container">
+        <div class="reason-display" id="reasonDisplay">
+          <p>Click the button to generate a reason why you're amazing</p>
+        </div>
+        <button class="generate-button" onclick="generateReason()">
+          <span>GENERATE REASON</span>
+        </button>
+        <div class="reason-counter">
+          Generated: <span id="reasonCount">0</span> / ∞
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">COMPATIBILITY TEST</h2>
+      
+      <div class="quiz-container">
+        <div class="question-card" id="quizCard">
+          <h3>Question 1:</h3>
+          <p>What's my favorite way to spend time with you?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="answerQuiz(1)">A) Doing absolutely nothing together</button>
+            <button class="quiz-option" onclick="answerQuiz(1)">B) Going on adventures</button>
+            <button class="quiz-option" onclick="answerQuiz(1)">C) Deep 2am conversations</button>
+            <button class="quiz-option" onclick="answerQuiz(1)">D) All of the above ✓</button>
+          </div>
+        </div>
+        
+        <div class="quiz-result" id="quizResult" style="display: none;">
+          <div class="result-meter">
+            <div class="meter-fill" id="meterFill"></div>
+          </div>
+          <h3>COMPATIBILITY: <span id="compatScore">0</span>%</h3>
+          <p>Just kidding, it's always been 100%. The test was rigged from the start because you're perfect. 💜</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future Simulator -->
+    <section id="future" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">FUTURE SIMULATOR</h2>
+      
+      <div class="future-container">
+        <div class="future-card">
+          <div class="future-icon">📅</div>
+          <h3>Next Month</h3>
+          <p>Still making each other laugh at the dumbest things</p>
+        </div>
+        
+        <div class="future-card">
+          <div class="future-icon">🎂</div>
+          <h3>Next Year</h3>
+          <p>Even more inside jokes, even more memories</p>
+        </div>
+        
+        <div class="future-card">
+          <div class="future-icon">🌟</div>
+          <h3>Five Years</h3>
+          <p>Looking back at this website and smiling at how far we've come</p>
+        </div>
+        
+        <div class="future-card">
+          <div class="future-icon">♾️</div>
+          <h3>Forever</h3>
+          <p>You and me, still figuring it out together</p>
+        </div>
+      </div>
+      
+      <div class="final-message">
+        <div class="message-box">
+          <p>No matter what the future holds, I'm glad you're in it. Happy Valentine's Day. ❤️</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="love-lab-script.js"></script>
+</body>
+</html>
