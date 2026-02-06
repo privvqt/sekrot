@@ -12,15 +12,62 @@
   <!-- Particle System Background -->
   <canvas id="particles"></canvas>
   
+  <!-- Floating Hearts -->
+  <div id="floatingHearts"></div>
+  
+  <!-- Interactive Stickers -->
+  <div id="stickerContainer"></div>
+  
   <!-- Lab Equipment Decoration -->
   <div class="lab-equipment">
     <div class="beaker beaker-1"></div>
     <div class="beaker beaker-2"></div>
     <div class="beaker beaker-3"></div>
   </div>
+  
+  <!-- Sticker Palette -->
+  <div class="sticker-palette" id="stickerPalette">
+    <div class="palette-toggle" onclick="toggleStickerPalette()">
+      <span class="toggle-icon">💕</span>
+      <span class="toggle-text">Stickers</span>
+    </div>
+    <div class="sticker-options">
+      <div class="sticker-btn" onclick="addSticker('💖')" title="Heart">💖</div>
+      <div class="sticker-btn" onclick="addSticker('✨')" title="Sparkle">✨</div>
+      <div class="sticker-btn" onclick="addSticker('🌟')" title="Star">🌟</div>
+      <div class="sticker-btn" onclick="addSticker('💝')" title="Gift">💝</div>
+      <div class="sticker-btn" onclick="addSticker('🌹')" title="Rose">🌹</div>
+      <div class="sticker-btn" onclick="addSticker('💐')" title="Flowers">💐</div>
+      <div class="sticker-btn" onclick="addSticker('🦋')" title="Butterfly">🦋</div>
+      <div class="sticker-btn" onclick="addSticker('⭐')" title="Star2">⭐</div>
+      <div class="sticker-btn" onclick="addSticker('💕')" title="Hearts">💕</div>
+      <div class="sticker-btn" onclick="addSticker('🎀')" title="Ribbon">🎀</div>
+      <div class="sticker-btn" onclick="addSticker('🌺')" title="Hibiscus">🌺</div>
+      <div class="sticker-btn" onclick="addSticker('💗')" title="Growing Heart">💗</div>
+    </div>
+  </div>
+  
+  <!-- Love Message Button -->
+  <button class="love-message-btn" onclick="showRandomLoveMessage()">
+    <span>💌</span>
+  </button>
 
   <!-- Main Container -->
   <div class="container">
+    
+    <!-- Love Notes Modal -->
+    <div id="loveNoteModal" class="love-note-modal">
+      <div class="love-note-content">
+        <span class="close-note" onclick="closeLoveNote()">×</span>
+        <div class="note-icon">💌</div>
+        <p id="loveNoteText"></p>
+      </div>
+    </div>
+    
+    <!-- Confetti Button -->
+    <button class="confetti-btn" onclick="triggerConfetti()" title="Celebrate!">
+      🎉
+    </button>
     
     <!-- Welcome Screen -->
     <section id="welcome" class="screen active">
@@ -54,7 +101,7 @@
           <div class="card-corner"></div>
           <div class="experiment-icon">⏳</div>
           <h3>FROM "BROADKASTER" TO "BABY"</h3>
-          <p>A lil timeline to reminisce</p>
+          <p>A little timeline to reminisce</p>
           <div class="status-indicator">
             <span class="status-dot"></span> READY
           </div>
@@ -100,6 +147,56 @@
           </div>
         </div>
 
+        <div class="experiment-card" onclick="runExperiment('memories')" style="--accent: #ff006e">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">📸</div>
+          <h3>MEMORY GENERATOR</h3>
+          <p>Mga sandaling hindi ko makakalimutan</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('promises')" style="--accent: #ffbe0b">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">🤝</div>
+          <h3>MY PROMISES TO YOU</h3>
+          <p>Mga pangako na hindi ko sisisihin</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('playlist')" style="--accent: #8338ec">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">🎵</div>
+          <h3>PLAYLIST ABOUT YOU</h3>
+          <p>Songs that remind me of us</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('bucketlist')" style="--accent: #3a86ff">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">🎯</div>
+          <h3>OUR BUCKET LIST</h3>
+          <p>Adventures waiting for us</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
+        <div class="experiment-card" onclick="runExperiment('letters')" style="--accent: #fb5607">
+          <div class="card-corner"></div>
+          <div class="experiment-icon">💌</div>
+          <h3>SEALED LETTERS</h3>
+          <p>Para sa mga special moments</p>
+          <div class="status-indicator">
+            <span class="status-dot"></span> READY
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -110,7 +207,7 @@
       
       <div class="timeline">
         <div class="timeline-item" style="--delay: 0.1s">
-          <div class="timeline-date">Day 001</div>
+          <div class="timeline-date">October 17, 2024</div>
           <div class="timeline-content">
             <h4>First Contact</h4>
             <p>Hindi ko sukat akalain na sa LRC ko lang pala makikita ang mga matang handa kong titigan hanggang sa pagtanda. 
@@ -121,18 +218,32 @@
         </div>
         
         <div class="timeline-item" style="--delay: 0.2s">
-          <div class="timeline-date">Day 023</div>
+          <div class="timeline-date">February 6, 2025 - 11:47 PM</div>
           <div class="timeline-content">
-            <h4>The Realization</h4>
-            <p>I couldn't stop thinking about you. Science confirms: you're stuck in my brain.</p>
+            <h4>Bakit 'di subukan?</h4>
+            <p>Magmula noon, samu't saring pagpaparinig na ginawa ko sa'yo. Kahit alam kong dadalawa lang ang tenga mo,
+              sapat nang mapakinggan ng isa ang libo-libong bersyon ng ako na nagnanais na makausap ka. Patulog na ako non e, 
+              pero naisip ko, bakit hindi natin simulan yang pagtulog mo na ang iniisip ay ako? Hindi naman masama ang mangarap. In short,
+              hindi ka masama AHAHAHAHAHA. Ayun, kinabukasan, nagulat talaga ako. Nakakita ba naman ng tanawing bago sa mga mata ko — 
+              ang reply mo. Para akong naging sampung taong gulang non na kinakabahan sa card's day. Kinabakahan ako kase it was not
+              something that I expected, at all. Sa isip ko, di mo talaga ako papansinin non kase I was a total stranger that time. 
+              But guess what? It was something I can be happy about. Tama pala, hindi masama ang dumikit sa apoy, lalo na kung kailangan mo
+              ang ningas nito.
+            </p>
           </div>
         </div>
         
         <div class="timeline-item" style="--delay: 0.3s">
-          <div class="timeline-date">Day 089</div>
+          <div class="timeline-date">February 15, 2025 - 1:09 AM</div>
           <div class="timeline-content">
-            <h4>Peak Happiness</h4>
-            <p>That day we laughed until 3am. My cheeks hurt but I didn't care.</p>
+            <h4>Broadkaster ng Matrix?</h4>
+            <p>It was this line na nagbigay ng pag-asa sa akin. After ko kasi mag first move through Gforms, I did not get a chance to talk
+              with you again. Saddening. But then, this specific date came. Hanggang ngayon, may puwang pa rin sa puso ko ang JPIA page. Kung
+              hindi siya nagpa-ngl, hindi maga-exist 'tong website na ito. Not only that, I super appreciate you sa pag approach sa akin the
+              moment na nabasa mo  'yong message ko. You know what, I was totally happy, thinking na ako 'yong pumasok sa isip mo nong nabasa mo 'yon.
+              Malamang, sobrang halata mo kasi Pribado. But then again, hinding hindi ko malilimutan yong moment na yon, kung paano lumaki nang 
+              husto ang iris ng mga mata ko sa tuwa, at kung paano nagsimula ang pag ngawit ng panga ko kaka-adjust dahil sa pag ngiti.
+            </p>
           </div>
         </div>
         
@@ -314,6 +425,473 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- Memory Generator -->
+    <section id="memories" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">MEMORY GENERATOR</h2>
+      
+      <div class="memories-container">
+        <div class="memory-prompt">
+          <p>Eto yung mga moments na gustong-gusto kong balikan...</p>
+        </div>
+        
+        <div class="memory-grid">
+          <div class="memory-card" style="--delay: 0.1s">
+            <div class="memory-date">Every Single Day</div>
+            <div class="memory-icon">😊</div>
+            <h4>Your Good Morning Messages</h4>
+            <p>Walang araw na hindi ko ine-expect ang message mo. It's the best way to start my day, knowing na naisip mo ako pagkagising mo.</p>
+          </div>
+
+          <div class="memory-card" style="--delay: 0.2s">
+            <div class="memory-date">Late Night Talks</div>
+            <div class="memory-icon">🌙</div>
+            <h4>3AM Convos</h4>
+            <p>Yung mga random talks natin na napupuyat tayo pero okay lang kasi masaya naman. Dito ko nalaman na sobrang dami nating common interests.</p>
+          </div>
+
+          <div class="memory-card" style="--delay: 0.3s">
+            <div class="memory-date">Random Moments</div>
+            <div class="memory-icon">😂</div>
+            <h4>Your Memes and Jokes</h4>
+            <p>Kahit corny minsan, nakakatawa pa rin. You always know how to make me laugh, kahit bad mood ako.</p>
+          </div>
+
+          <div class="memory-card" style="--delay: 0.4s">
+            <div class="memory-date">Every Call</div>
+            <div class="memory-icon">📞</div>
+            <h4>Hearing Your Voice</h4>
+            <p>Iba talaga pag narinig ko na boses mo. Parang lahat ng pagod ko, nawala. Your voice is my comfort zone.</p>
+          </div>
+
+          <div class="memory-card" style="--delay: 0.5s">
+            <div class="memory-date">Sweet Moments</div>
+            <div class="memory-icon">💝</div>
+            <h4>Your Random "I Miss You"</h4>
+            <p>Walang mas nakaka-kilig pa sa biglaan mong "I miss you" messages. Makes me feel special and loved.</p>
+          </div>
+
+          <div class="memory-card" style="--delay: 0.6s">
+            <div class="memory-date">Future Memory</div>
+            <div class="memory-icon">✨</div>
+            <h4>This Valentine's Day</h4>
+            <p>Showing you this website and seeing your reaction. I hope this makes you smile as much as you make me smile every day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Promises -->
+    <section id="promises" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">MY PROMISES TO YOU</h2>
+      
+      <div class="promises-container">
+        <div class="promise-intro">
+          <p>These aren't just words. These are commitments I'm making to you, baby.</p>
+        </div>
+
+        <div class="promises-list">
+          <div class="promise-item" style="--delay: 0.1s">
+            <div class="promise-number">01</div>
+            <div class="promise-content">
+              <h4>I promise to always make you laugh</h4>
+              <p>Even when you're mad at me, I'll find a way to make you smile. Your happiness is my mission.</p>
+            </div>
+          </div>
+
+          <div class="promise-item" style="--delay: 0.2s">
+            <div class="promise-number">02</div>
+            <div class="promise-content">
+              <h4>I promise to listen</h4>
+              <p>Hindi lang marinig, pero talaga akong makinig. Your thoughts, your rants, your dreams - lahat importante sa akin.</p>
+            </div>
+          </div>
+
+          <div class="promise-item" style="--delay: 0.3s">
+            <div class="promise-number">03</div>
+            <div class="promise-content">
+              <h4>I promise to be patient</h4>
+              <p>I know we both have our moments. I'll be patient with you, with us, with everything we're building.</p>
+            </div>
+          </div>
+
+          <div class="promise-item" style="--delay: 0.4s">
+            <div class="promise-number">04</div>
+            <div class="promise-content">
+              <h4>I promise to support your dreams</h4>
+              <p>Whatever you want to achieve, I'll be your biggest cheerleader. Your success is my success too.</p>
+            </div>
+          </div>
+
+          <div class="promise-item" style="--delay: 0.5s">
+            <div class="promise-number">05</div>
+            <div class="promise-content">
+              <h4>I promise to grow with you</h4>
+              <p>Hindi ako perfect, pero I promise to be better every day. We'll grow together, learn together.</p>
+            </div>
+          </div>
+
+          <div class="promise-item" style="--delay: 0.6s">
+            <div class="promise-number">06</div>
+            <div class="promise-content">
+              <h4>I promise to choose you</h4>
+              <p>Every single day, I'll choose you. In good times and bad times, I'll always choose us.</p>
+            </div>
+          </div>
+
+          <div class="promise-item" style="--delay: 0.7s">
+            <div class="promise-number">07</div>
+            <div class="promise-content">
+              <h4>I promise to love you genuinely</h4>
+              <p>Not perfectly, but genuinely. With all my heart, with all that I am. You deserve nothing less.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="promise-signature">
+          <p>— Your Engineer, Your Broadkaster, Your Baby</p>
+          <p class="signature-date">February 14, 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Playlist -->
+    <section id="playlist" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">SONGS THAT SOUNDS LIKE YOU</h2>
+      
+      <div class="playlist-container">
+        <div class="playlist-intro">
+          <p>Songs that make me think of you, of us, of what we're building together...</p>
+        </div>
+
+        <div class="song-list">
+          <div class="song-card" style="--delay: 0.1s">
+            <div class="song-play-section">
+              <button class="play-btn" onclick="playSong(0, this)">
+                <span class="play-icon">▶</span>
+              </button>
+              <div class="song-icon">🎵</div>
+            </div>
+            <div class="song-info">
+              <h4>"Panata" - Tothapi</h4>
+              <p>Litrato man natin ay kumupas, hindi ang ala-alang nakakubli rito. What I love about this song is that it captures how love can remain, 
+                even when everything else fades.I want us to be like that, bebi. I don’t want our story to end. 
+                I want us to be an open book where time may fold the pages, but never erase the words we chose to write together. </p>
+              <audio class="song-audio" preload="metadata">
+                <source src="Panata.mp3" type="audio/mpeg">
+              </audio>
+              <div class="song-progress">
+                <div class="progress-bar" id="progress-0"></div>
+              </div>
+              <div class="song-time">
+                <span class="current-time" id="current-0">0:00</span>
+                <span class="total-time" id="total-0">5:30</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="song-card" style="--delay: 0.2s">
+            <div class="song-play-section">
+              <button class="play-btn" onclick="playSong(1, this)">
+                <span class="play-icon">▶</span>
+              </button>
+              <div class="song-icon">🎵</div>
+            </div>
+            <div class="song-info">
+              <h4>"Ikaw at Ako" - Johnoy Danao</h4>
+              <p>If you ever hear this song, tandaan mo na sabay natin itong pinapakinggan—even if you’re not really here. 
+                I’m playing this while I’m making this website, literally habang tinatype ko ’to AHAHAHA. Ang catchy niya, pero somehow, 
+                napapaiyak ako sa hindi ko malamang dahilan. Maybe because it somewhat reminds me of you. This song made me realize na
+                loving you never felt rushed or pressuring. That's how it should be. I want to learn more about you, and I want you to
+                learn more about me as well.</p>
+              <audio class="song-audio" preload="metadata">
+                <source src="ikaw.mp3" type="audio/mpeg">
+              </audio>
+              <div class="song-progress">
+                <div class="progress-bar" id="progress-1"></div>
+              </div>
+              <div class="song-time">
+                <span class="current-time" id="current-1">0:00</span>
+                <span class="total-time" id="total-1">4:50</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="song-card" style="--delay: 0.3s">
+            <div class="song-play-section">
+              <button class="play-btn" onclick="playSong(2, this)">
+                <span class="play-icon">▶</span>
+              </button>
+              <div class="song-icon">🎵</div>
+            </div>
+            <div class="song-info">
+              <h4>"TV in Black and White" - Lana Del Rey</h4>
+              <p>Tinanong ko pa pinsan ko kase nalimutan ko title neto. Hindi rin niya alam AHAHA. Nalaman ko lang
+                nong nag hum ako sa yt. Mukha lang baliw pero at least nalaman ko ulit title. Just like the song,
+                you are living in my head rent free. At kahit makulong man ako, I will make sure na ikaw ang sintesya ko.
+              </p>
+              <audio class="song-audio" preload="metadata">
+                <source src="TV.mp3" type="audio/mpeg">
+              </audio>
+              <div class="song-progress">
+                <div class="progress-bar" id="progress-2"></div>
+              </div>
+              <div class="song-time">
+                <span class="current-time" id="current-2">0:00</span>
+                <span class="total-time" id="total-2">0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="song-card" style="--delay: 0.4s">
+            <div class="song-play-section">
+              <button class="play-btn" onclick="playSong(3, this)">
+                <span class="play-icon">▶</span>
+              </button>
+              <div class="song-icon">🎵</div>
+            </div>
+            <div class="song-info">
+              <h4>"Kailan Kaya" - Ian Quiruz</h4>
+              <p>Because you are my universe. Everything revolves around you, and I wouldn't have it any other way.</p>
+              <audio class="song-audio" preload="metadata">
+                <source src="kailan kaya.mp3" type="audio/mpeg">
+              </audio>
+              <div class="song-progress">
+                <div class="progress-bar" id="progress-3"></div>
+              </div>
+              <div class="song-time">
+                <span class="current-time" id="current-3">0:00</span>
+                <span class="total-time" id="total-3">0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="song-card" style="--delay: 0.5s">
+            <div class="song-play-section">
+              <button class="play-btn" onclick="playSong(4, this)">
+                <span class="play-icon">▶</span>
+              </button>
+              <div class="song-icon">🎵</div>
+            </div>
+            <div class="song-info">
+              <h4>"Mata sa Mata" - 7th</h4>
+              <p>Kasi nga, araw-araw kong iniisip kung paano kita mapapaligaya. You're on my mind 24/7.</p>
+              <audio class="song-audio" preload="metadata">
+                <source src="mata.mp3" type="audio/mpeg">
+              </audio>
+              <div class="song-progress">
+                <div class="progress-bar" id="progress-4"></div>
+              </div>
+              <div class="song-time">
+                <span class="current-time" id="current-4">0:00</span>
+                <span class="total-time" id="total-4">0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="song-card" style="--delay: 0.6s">
+            <div class="song-play-section">
+              <button class="play-btn" onclick="playSong(5, this)">
+                <span class="play-icon">▶</span>
+              </button>
+              <div class="song-icon">🎵</div>
+            </div>
+            <div class="song-info">
+              <h4>"Pag-ibig ay Kanibalismo II" - Fitterkarma</h4>
+              <p>Maybe the night holds a little hope for us. Maybe we're meant to be. I really think we are.</p>
+              <audio class="song-audio" preload="metadata">
+                <source src="kanibalismo.mp3" type="audio/mpeg">
+              </audio>
+              <div class="song-progress">
+                <div class="progress-bar" id="progress-5"></div>
+              </div>
+              <div class="song-time">
+                <span class="current-time" id="current-5">0:00</span>
+                <span class="total-time" id="total-5">0:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="playlist-note">
+          <p>Basically, these are all my favorite songs. Every song reminds me of you in different ways. 
+            One day, we'll make our own playlist together. Wuv youu!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bucket List -->
+    <section id="bucketlist" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">OUR BUCKET LIST</h2>
+      
+      <div class="bucketlist-container">
+        <div class="bucket-intro">
+          <p>Things I want to experience with you. Let's make these happen, baby! ✨</p>
+        </div>
+
+        <div class="bucket-grid">
+          <div class="bucket-item" style="--delay: 0.1s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>First Date IRL</h4>
+              <p>Kahit simple lang - coffee, mall, anywhere. I just want to see you smile in person.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.2s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Watch Sunrise Together</h4>
+              <p>Early morning adventure. Coffee in hand, watching the sky change colors, with you beside me.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.3s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Beach Trip</h4>
+              <p>Dagat, buhangin, sunset. Tapos mag-swimming tayo or just chill by the shore. Perfect.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.4s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Cook Together</h4>
+              <p>Even if sunog yung luto, okay lang. The fun is in doing it together. Plus, mas masarap pag kayo nagluto.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.5s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Stargazing</h4>
+              <p>Find a quiet place, lie down, look at the stars, and just talk about everything and nothing.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.6s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Road Trip</h4>
+              <p>Walang specific destination. Just drive, explore, sing along to our playlist, and make memories.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.7s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Take Silly Photos Together</h4>
+              <p>Photobooth, selfies, candid shots. I want to fill my gallery with pictures of us being happy and goofy.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.8s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Movie Marathon</h4>
+              <p>Your favorite movies, my favorite movies. Snacks, blankets, cuddles. The perfect lazy day.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 0.9s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Celebrate Our Firsts</h4>
+              <p>First month, first year, every milestone. I want to celebrate everything with you.</p>
+            </div>
+          </div>
+
+          <div class="bucket-item" style="--delay: 1s">
+            <div class="bucket-checkbox">☐</div>
+            <div class="bucket-content">
+              <h4>Build Our Future Together</h4>
+              <p>The biggest adventure of all. Whatever it looks like, I want you in it. Always.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sealed Letters -->
+    <section id="letters" class="screen">
+      <button class="back-button" onclick="backToDashboard()">← BACK TO LAB</button>
+      <h2 class="section-title">SEALED LETTERS</h2>
+      
+      <div class="letters-container">
+        <div class="letters-intro">
+          <p>Letters for different moments in our journey. Open them when you need them most. 💌</p>
+        </div>
+
+        <div class="letters-grid">
+          <div class="letter-envelope" onclick="openLetter('happy')">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+              <div class="letter-icon">😊</div>
+              <h4>When You're Happy</h4>
+              <p class="letter-hint">Click to open</p>
+            </div>
+          </div>
+
+          <div class="letter-envelope" onclick="openLetter('sad')">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+              <div class="letter-icon">🥺</div>
+              <h4>When You're Sad</h4>
+              <p class="letter-hint">Click to open</p>
+            </div>
+          </div>
+
+          <div class="letter-envelope" onclick="openLetter('stressed')">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+              <div class="letter-icon">😤</div>
+              <h4>When You're Stressed</h4>
+              <p class="letter-hint">Click to open</p>
+            </div>
+          </div>
+
+          <div class="letter-envelope" onclick="openLetter('missing')">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+              <div class="letter-icon">💭</div>
+              <h4>When You Miss Me</h4>
+              <p class="letter-hint">Click to open</p>
+            </div>
+          </div>
+
+          <div class="letter-envelope" onclick="openLetter('proud')">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+              <div class="letter-icon">🌟</div>
+              <h4>When You Achieve Something</h4>
+              <p class="letter-hint">Click to open</p>
+            </div>
+          </div>
+
+          <div class="letter-envelope" onclick="openLetter('anytime')">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+              <div class="letter-icon">💕</div>
+              <h4>Anytime You Want</h4>
+              <p class="letter-hint">Click to open</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter Modal -->
+      <div id="letterModal" class="letter-modal">
+        <div class="letter-content">
+          <span class="close-letter" onclick="closeLetter()">×</span>
+          <div id="letterText"></div>
+        </div>
+      </div>
     </section>
 
   </div>
