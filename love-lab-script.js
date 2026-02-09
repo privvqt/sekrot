@@ -599,10 +599,10 @@ let hasShownWelcome = sessionStorage.getItem('welcomeShown');
 if (!hasShownWelcome && window.location.hash === '') {
   setTimeout(() => {
     const welcomeMessages = [
-      "Welcome to your special place, baby! 💕",
-      "Made with love, just for you ✨",
-      "Every pixel here is thinking of you 💖",
-      "This is your love laboratory 🧪💕"
+      "Welcome to your special place, baby!",
+      "Made with freshly picked potatoes",
+      "Kapag ba pinainit ko ulit ulo mo tawag sa akin heater?",
+      "Carbs, carbs, carbs"
     ];
     document.getElementById('loveNoteText').textContent = 
       welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
