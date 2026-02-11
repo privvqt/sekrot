@@ -2089,3 +2089,15 @@ body {
     font-size: 1.4rem;
   }
 }
+
+
+
+.timeline-content p,
+
+.letter-content p,
+.bucket-content p,
+.secret-text,
+.playlist-note,
+.song-card {
+  text-align: justify;
+}
