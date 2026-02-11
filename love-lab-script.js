@@ -111,25 +111,25 @@ function backToDashboard() {
 
 // Reason Generator
 const reasons = [
-  "Your laugh makes everything better, even bad jokes",
-  "You understand my weird sense of humor perfectly",
-  "You make ordinary moments feel extraordinary",
-  "Your smile is literally my favorite notification",
-  "You're the perfect balance of chaos and calm",
+  "Your voice!! Boi I'm so obssessed with your voice, halata naman.",
+  "I learned so many things from you. I want to learn more",
+  "Hilig ka rin mang ragebait e no",
+  "I love how genuine your smile is, nakakahawa",
+  "Your love on children, ket minsan natatakot na sila sa 'yo",
   "You make me want to be a better person",
-  "Your random 3am thoughts are my favorite conversations",
-  "You turn my bad days into good ones just by existing",
-  "You're cute even when you're being a total gremlin",
-  "You remember the tiny details I mention in passing",
-  "Your energy is infectious in the best way possible",
-  "You make me laugh until my stomach hurts",
-  "You're brilliant and you don't even realize it",
-  "You're my favorite person to do nothing with",
-  "You make me feel understood without saying a word",
-  "Your weird quirks are actually my favorite things about you",
-  "You're brave in ways you don't give yourself credit for",
-  "You light up every room you walk into",
-  "You make me feel at home wherever we are",
+  "Sama ko na rin ka-weirduhan mo boi",
+  "So good at listening, galing din mag comfort, may halong reyalidad talaga",
+  "Kyotie pag naiinis, pero ano, medyo iwas muna ron",
+  "Soperr smarttt, mamaw ba mamaw",
+  "Your height, hahaha patangkad ka pa para maabutan mo ako",
+  "Your cheeks huhu, aaaa ang cuteeeeeee, kakagigil",
+  "Pretty bebuu, kaso ayaw mo ng ganyang compliment e, pero no choice ka boi, ako gumawa neto",
+  "Matured asf, like, yes ma'am",
+  "You make me feel understood, thank uuuu",
+  "Lowkey sa socials, pang mysterious ang dating",
+  "Nasabi ko na ba na maganda ang bosessss",
+  "Yung pagiging passionate mo sa mga bagay na gusto mo",
+  "Your hair, the color of it, and how it conveys you",
   "You're the plot twist I never saw coming but needed"
 ];
 
@@ -467,26 +467,13 @@ document.addEventListener('touchend', stopDragging);
 
 // Love Messages System
 const loveMessages = [
-  "You make my code compile and my heart skip a beat 💕",
-  "Every moment with you is a feature, not a bug ✨",
-  "You're the missing semicolon that completes my life 💖",
-  "Baby, you're the reason I smile at my screen 🌟",
-  "You light up my world brighter than any RGB LED 💡",
-  "I'd wait forever just to see your message pop up 💬",
-  "You're my favorite notification 📱",
-  "With you, every day feels like a successful deployment 🚀",
-  "You're the best thing I never knew I needed 💝",
-  "Just thinking about you makes my day better 🌈",
-  "You make the ordinary extraordinary 🎆",
-  "My favorite place is wherever you are 🏡",
-  "You're my sunshine on the cloudiest days ☀️",
-  "I fall for you more every single day 🍂",
-  "You're the answer to questions I didn't know to ask 🔮",
-  "Being with you feels like coming home 🏠",
-  "You're my happy thought 💭",
-  "I love the way you see the world 🌍",
-  "Your laugh is my favorite sound in the universe 🎵",
-  "You make me believe in magic ✨"
+ "Ano ang paboritong exercise ng isda? edi swimming",
+ "Anong sabi ni messenger sa'yo nong nag story ka? you complete myday",
+ "Anong sinabi nung isda nong nakita yong isa pang isda? isdat you?",
+ "Saang part ng Pilipinas maraming mahilig gumala? edi sa palawan, kase sila ay pala-wander",
+ "Bakit maputi ang tinola? kase may papaya",
+ "Bakit maitim ang adobo? kase walang papaya",
+ "Ano fav pagkain ng taga Makati? kamote AHAHAHAAHAHAHAHAH kamote raw kase makati wahahahah umayy"
 ];
 
 function showRandomLoveMessage() {
@@ -662,7 +649,7 @@ console.log('💕 Special features loaded! Press Ctrl+H for love message, Ctrl+K
 
 const letters = {
   happy: {
-    title: "When You're Happy 😊",
+    title: "If you're happy :>",
     content: `
       <p>Baby, seeing you happy makes my whole world brighter. Your smile is contagious, and your laughter is my favorite sound in the entire universe.</p>
       
@@ -670,11 +657,10 @@ const letters = {
       
       <p>Keep shining, baby. Your joy is beautiful, and you deserve all the happiness in the world. I'll do my best to keep adding more reasons for you to smile.</p>
       
-      <p class="letter-signature">— Always here to celebrate with you 💕</p>
     `
   },
   sad: {
-    title: "When You're Sad 🥺",
+    title: "When You're Sad :<",
     content: `
       <p>Hey baby, I know you're not feeling okay right now, and that's completely fine. It's okay to not be okay sometimes.</p>
       
@@ -684,11 +670,11 @@ const letters = {
       
       <p>Take your time to feel what you need to feel. I'm not going anywhere. Cry if you need to, rest if you need to. I got you, always.</p>
       
-      <p class="letter-signature">— Your shoulder to lean on 💙</p>
+      
     `
   },
   stressed: {
-    title: "When You're Stressed 😤",
+    title: "Kapag stressed ikaw",
     content: `
       <p>I know you're going through a lot right now, baby. I can see how hard you're working, how much you're carrying. And I'm so proud of you for holding it together.</p>
       
@@ -698,11 +684,11 @@ const letters = {
       
       <p>Whatever you're facing, you'll get through it. You always do. And I believe in you more than you could ever know. One step at a time, baby. You got this.</p>
       
-      <p class="letter-signature">— Your biggest supporter 💪</p>
+      
     `
   },
   missing: {
-    title: "When You Miss Me 💭",
+    title: "Miss mo'ko????",
     content: `
       <p>Baby, I miss you too. Like, a lot. More than words can explain. You're probably reading this and thinking "wow, he's cheesy," but it's true.</p>
       
@@ -712,11 +698,11 @@ const letters = {
       
       <p>So until we see each other again, keep this in mind: you're always in my thoughts, always in my heart. I'm counting down the moments until I can see you again.</p>
       
-      <p class="letter-signature">— Missing you like crazy 💕</p>
+   
     `
   },
   proud: {
-    title: "When You Achieve Something 🌟",
+    title: "When You Achieve Something",
     content: `
       <p>BABY!!! I'm so freaking proud of you! Look at you, achieving things, being amazing, showing the world how incredible you are!</p>
       
@@ -728,11 +714,11 @@ const letters = {
       
       <p>Congratulations, baby! You're a star! Keep shining! ✨</p>
       
-      <p class="letter-signature">— Your proud boyfriend 🎉</p>
+      
     `
   },
   anytime: {
-    title: "Just Because 💕",
+    title: "Just Because",
     content: `
       <p>Hi baby! You opened this letter just because, and I love that. No special occasion needed - you just wanted to read something from me.</p>
       
@@ -746,7 +732,7 @@ const letters = {
       
       <p>I love you, baby. Today, tomorrow, always.</p>
       
-      <p class="letter-signature">— Yours, always and forever 💖</p>
+      
     `
   }
 };
