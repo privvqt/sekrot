@@ -2093,11 +2093,9 @@ body {
 
 
 .timeline-content p,
-
 .letter-content p,
 .bucket-content p,
 .secret-text,
-.playlist-note,
-.song-card {
+.playlist-note {
   text-align: justify;
 }
