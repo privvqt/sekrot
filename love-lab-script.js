@@ -359,7 +359,7 @@ function createFloatingHeart() {
   const heartsContainer = document.getElementById('floatingHearts');
   const heart = document.createElement('div');
   heart.className = 'floating-heart';
-  heart.textContent = ['💖', '💕', '💗', '💝', '❤️', '💓'][Math.floor(Math.random() * 6)];
+  heart.textContent = ['🐧', '💚', '🐈', '🦦', '🦫', '💋'][Math.floor(Math.random() * 6)];
   heart.style.left = Math.random() * 100 + '%';
   heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
   heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
@@ -605,7 +605,7 @@ document.querySelectorAll('.neon-button, .experiment-card, .generate-button').fo
     for (let i = 0; i < 3; i++) {
       setTimeout(() => {
         const sparkle = document.createElement('div');
-        sparkle.textContent = '✨';
+        sparkle.textContent = '🐧';
         sparkle.style.position = 'fixed';
         sparkle.style.pointerEvents = 'none';
         sparkle.style.fontSize = '20px';
